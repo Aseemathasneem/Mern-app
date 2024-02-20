@@ -17,13 +17,16 @@ export default function Header() {
           <Link to='/about'>
             <li>About</li>
           </Link>
-          <Link to='/profile'>
-            {currentUser ? (
+          {currentUser && !currentUser.is_admin && ( 
+            <Link to='/profile'>
               <img src={currentUser.profilePicture} alt='profile' className='h-7 w-7 rounded-full object-cover' />
-            ) : (
+            </Link>
+          )}
+          {!currentUser && ( // Render Sign In link when no user is logged in
+            <Link to='/sign-in'>
               <li>Sign In</li>
-            )}
-          </Link>
+            </Link>
+          )}
         </ul>
       </div>
     </div>
