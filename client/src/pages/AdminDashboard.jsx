@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
  
 export default function AdminDashboard() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
