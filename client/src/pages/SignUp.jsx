@@ -14,6 +14,18 @@ export default function SignUp() {
   }
   const handleSubmit =async(e)=>{
     e.preventDefault()
+    // Basic JavaScript validation
+  if (!formData.username || !formData.email || !formData.password) {
+    setError('Please fill in all fields.');
+    return;
+  }
+
+  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    setError(true);
+    return;
+  }
     try {
       setLoading(true)
       setError(false)
@@ -28,14 +40,14 @@ export default function SignUp() {
       const data =await res.json()
       setLoading(false)
       if(data.success === false){
-        setError(true)
+        setError(data.message || 'Something went wrong.')
         return
       }
       navigate('/sign-in')
      
     } catch (error) {
       setLoading(false)
-      setError(true)
+      setError('Something went wrong.')
     }
     
     
@@ -66,7 +78,7 @@ export default function SignUp() {
         </Link>
         
       </div>
-      <p className='text-red-700 mt-5'>{error && 'Something went wrong!'}</p>
+      {error && <p className="text-red-700 mt-5">{error}</p>}
     </div>
   )
 }

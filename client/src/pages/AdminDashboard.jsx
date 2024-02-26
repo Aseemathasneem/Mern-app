@@ -22,7 +22,7 @@ export default function AdminDashboard() {
 
     fetchUsers();
   }, []);
-   // Filter users based on search term
+   
    const filteredUsers = users.filter(user =>
     user.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -81,8 +81,9 @@ export default function AdminDashboard() {
                 <img src={user.profilePicture} alt={user.name} className="w-16 h-16 rounded-full" />
               </td>
               <td className="border px-4 py-2">
-              <button onClick={() => deleteUser(user._id)}>Delete</button>
-              <button onClick={() => editUser(user._id)}>Edit</button>
+              <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => deleteUser(user._id)}>Delete</button>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+               onClick={() => editUser(user._id)}>Edit</button>
               </td>
             </tr>
           ))}

@@ -152,13 +152,7 @@ export default function EditUser() {
           className='bg-slate-100 rounded-lg p-3'
           onChange={handleChange}
         />
-        <input
-          type='password'
-          id='password'
-          placeholder='Password'
-          className='bg-slate-100 rounded-lg p-3'
-          onChange={handleChange}
-        />
+        
         <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
           {loading ? 'Loading...' : 'Update'}
         </button>

@@ -6,9 +6,11 @@ import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import PrivateRoute from "./components/privateRoute";
+
 import AdminDashboard from "./pages/AdminDashboard";
 import EditUser from "./pages/EditUser";
 import AddUser from "./pages/AddUser";
+import ProtectedRoute from "./components/protectedRoute";
 
 
 function App() {
@@ -19,7 +21,9 @@ function App() {
          {/* User Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route element={<ProtectedRoute/>}>
         <Route path="/sign-in" element={<SignIn userType="user" />} />
+        </Route>
         <Route path="/sign-up" element={<SignUp />} />
         <Route element={<PrivateRoute userType="user" />}>
           <Route path="/profile" element={<Profile />} />
@@ -29,8 +33,7 @@ function App() {
         <Route path="/admin/sign-in" element={<SignIn userType="admin" />} />
         <Route element={<PrivateRoute userType="admin" />}>
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        
-    </Route>
+        </Route>
     <Route path="/admin/edit-user/:userId" element={<EditUser />} />
     <Route path="/admin/add-user" element={<AddUser />} />
       </Routes>
